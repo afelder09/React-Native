@@ -4,12 +4,16 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducers from './reducers';
 import { Header } from './components/common';
+import LibraryList from './components/LibraryList';
+
+const store = createStore(reducers);
 
 const App = () => {
     return( 
-        <Provider store={createStore(reducers)}>
-            <View >
-            <Header headerText="Tech Stastic" />
+        <Provider store={store}>
+            <View style={{ flex: 1}}>
+                <Header headerText="Tech Stastic" />
+                <LibraryList />
             </View>
         </Provider>
     );
