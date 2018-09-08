@@ -1,4 +1,4 @@
-import EMPLOYEE_FORM_UPDATE from '../action/types';
+import { EMPLOYEE_UPDATE, EMPLOYEE_CREATE, EMPLOYEE_FETCH_SUCCESS, EMPLOYEE_SAVE_SUCCESS } from '../action/types';
 
 const INITIAL_STATE = { 
     name: '',
@@ -7,10 +7,15 @@ const INITIAL_STATE = {
 };
 
 export default (state = INITIAL_STATE, action ) => {
-    switch(action.type) {
-        case EMPLOYEE_FORM_UPDATE:
-            console.log(action)
-            return { ...state, [action.payload.prop]: action.payload}
+    switch (action.type) {
+        case EMPLOYEE_UPDATE:
+            return { ...state, [action.payload.prop]: action.payload.value };
+        case EMPLOYEE_CREATE:
+            return INITIAL_STATE;
+        case EMPLOYEE_FETCH_SUCCESS:
+            return { }
+        case EMPLOYEE_SAVE_SUCCESS:
+            return INITIAL_STATE;
         default:
             return state;
     }
